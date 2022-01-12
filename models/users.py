@@ -20,8 +20,8 @@ class UserModel(db.Model):
     last_name = db.Column(db.String(20), nullable=False)
     email = db.Column(db.String(120), nullable=False, unique=True)
     password = db.Column(db.String(255), nullable=False)
-    plants = db.relationship("PlantModel", backref="plants", lazy="dynamic")
-    demo = db.Column(db.String(20), nullable=False)
+    # plants = db.relationship("PlantModel", backref="plants", lazy="dynamic")
+    # demo = db.Column(db.String(20), nullable=False)
 
 
 # class AdminModel(db.Model):
