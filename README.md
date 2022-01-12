@@ -1,2 +1,3 @@
 # planary
-https://github.com/
+
+## Planary is a simple plant diary.
