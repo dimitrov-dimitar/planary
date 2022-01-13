@@ -9,7 +9,6 @@ class PlantModel(db.Model):
     catalogue_name = db.Column(db.String(120), nullable=False)
     description = db.Column(db.String(240), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
-    user = db.relationship("UserModel")
 
 
 class UserModel(db.Model):
@@ -20,6 +19,7 @@ class UserModel(db.Model):
     last_name = db.Column(db.String(20), nullable=False)
     email = db.Column(db.String(120), nullable=False, unique=True)
     password = db.Column(db.String(255), nullable=False)
+    plants = db.relationship("PlantModel")
     # plants = db.relationship("PlantModel", backref="plants", lazy="dynamic")
     # demo = db.Column(db.String(20), nullable=False)
 
@@ -33,4 +33,6 @@ class AdminModel(db.Model):
     email = db.Column(db.String(120), nullable=False, unique=True)
     password = db.Column(db.String(255), nullable=False)
     role = db.Column(db.Enum(RoleType), default=RoleType.admin, nullable=False)
+    description = db.Column(db.String(240), nullable=False)
+
 
