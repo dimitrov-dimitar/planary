@@ -1,5 +1,5 @@
 from db import db
-
+from models.enums import RoleType
 
 class PlantModel(db.Model):
     __tablename__ = "plants"
@@ -24,10 +24,13 @@ class UserModel(db.Model):
     # demo = db.Column(db.String(20), nullable=False)
 
 
-# class AdminModel(db.Model):
-#     __tablename__ = "admins"
+class AdminModel(db.Model):
+    __tablename__ = "administrators"
 
-#     id = db.Column(db.Integer, primary_key=True)
-#     first_name = db.Column(db.String(255), nullable=False)
-#     last_name = db.Column(db.String(255), nullable=False)
+    id = db.Column(db.Integer, primary_key=True)
+    first_name = db.Column(db.String(20), nullable=False)
+    last_name = db.Column(db.String(20), nullable=False)
+    email = db.Column(db.String(120), nullable=False, unique=True)
+    password = db.Column(db.String(255), nullable=False)
+    role = db.Column(db.Enum(RoleType), default=RoleType.admin, nullable=False)
 
