@@ -1,8 +1,8 @@
-from flask_restful import Resource
-from managers.services import Service
+import requests
 from decouple import config
 from flask import request
-import requests
+from flask_restful import Resource
+from managers.services import Service
 
 
 class WeatherForecast(Resource):
@@ -11,5 +11,5 @@ class WeatherForecast(Resource):
 
         response = requests.post(
             f"https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&appid={config('API_KEY_WEATHER')}",
-).json()
+        ).json()
         return response, 200
